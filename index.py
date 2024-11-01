@@ -1,60 +1,18 @@
-
-# Implementar una clase Producto con los siguientes atributos:
-
-# nombre: El nombre del producto.
-# categoria: La categoría a la que pertenece el producto.
-# precio: El precio del producto (debe ser mayor que 0).
-# cantidad: La cantidad en stock (debe ser mayor o igual que 0).
-class Producto:
-    # Precio debe ser mayor a 0 // Cantidad >= 0
-    def __init__(self, nombre, categoria, precio, cantidad):
-        self.nombre = nombre
-        self.categoria = categoria
-        self.precio = precio
-        self.cantidad = cantidad
-
-
-# Implementar una clase Inventario que maneje una lista de productos y permita las siguientes operaciones:
-
-# 1.Agregar un producto: Verificar que el producto no exista previamente en el inventario.
-
-
-
-# 4.Mostrar inventario: Listar todos los productos disponibles.
-# 5.Buscar un producto: Permitir buscar un producto por nombre.
-
-class Inventario:
-    def __init__(self, productos=[]):
-        self.productos = productos
-        pass
-
-    # 2.Actualizar un producto: Modificar el precio o la cantidad en stock de un producto ya existente.
-    def modificar_Precio(self):
-        nuevoPrecio = int(input('Introduce el nuevo precio para el producto:'))
-        self.precio = nuevoPrecio
-   
-    def modificar_Cantidad(self):
-        nuevaCantidad = int(input('Introduce las unidades actuales del producto:'))
-        self.cantidad = nuevaCantidad
-
-    # 3.Eliminar un producto: Quitar un producto del inventario. 
-    def borrar_producto(self, dni=None):
-        for i, prod in enumerate(self.productos):
-            if prod.dni == dni:
-                del(self.clientes[i])
-                print(str(prod),"> BORRADO")
-                return
-        print("Cliente no encontrado")
-
-
 """
 Ejercicio Final - Enunciado
 Descripción: Crea una aplicación en Python para la gestión de un inventario de productos, usando programación orientada a objetos (POO). El sistema debe permitir agregar, actualizar, eliminar y mostrar productos en un inventario, cada uno de los cuales es representado como un objeto de la clase Producto.
+Requisitos:
+1.
+Clases y Objetos:
 
-1.Clases y Objetos:
+Implementar una clase Producto con los siguientes atributos:
 
+nombre: El nombre del producto.
+categoria: La categoría a la que pertenece el producto.
+precio: El precio del producto (debe ser mayor que 0).
+cantidad: La cantidad en stock (debe ser mayor o igual que 0).
 
-
+Implementar una clase Inventario que maneje una lista de productos y permita las siguientes operaciones:
 
 1.Agregar un producto: Verificar que el producto no exista previamente en el inventario.
 
