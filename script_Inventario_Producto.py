@@ -1,17 +1,13 @@
 
 # Implementar una clase Producto con los siguientes atributos:
 
-# nombre: El nombre del producto.
-# categoria: La categoría a la que pertenece el producto.
-# precio: El precio del producto (debe ser mayor que 0).
-# cantidad: La cantidad en stock (debe ser mayor o igual que 0).
 class Producto:
     # Precio debe ser mayor a 0 // Cantidad >= 0
     def __init__(self, nombre, categoria, precio, cantidad):
-        self.nombre = nombre
-        self.categoria = categoria
-        self.precio = precio
-        self.cantidad = cantidad
+        self.nombre = nombre # nombre: El nombre del producto.
+        self.categoria = categoria # categoria: La categoría a la que pertenece el producto.
+        self.precio = precio # precio: El precio del producto (debe ser mayor que 0).
+        self.cantidad = cantidad # cantidad: La cantidad en stock (debe ser mayor o igual que 0).
 
 
 # Implementar una clase Inventario que maneje una lista de productos y permita las siguientes operaciones:
