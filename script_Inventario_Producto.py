@@ -9,13 +9,29 @@ class Producto:
         self.precio = precio # precio: El precio del producto (debe ser mayor que 0).
         self.cantidad = cantidad # cantidad: La cantidad en stock (debe ser mayor o igual que 0).
 
+    def precio(self):
+        return self._precio
+    
+    def precio(self, euros):
+        if euros >= 0:
+            self._precio  = euros
+        else:
+            raise ValueError('El precio del producto ${self._name} debe ser mayor o igual que 0.')
+
+    def cantidad(self):
+                return self._cantidad
+    
+    def cantidad(self, unidades):
+        if unidades >= 0:
+            self._cantidad  = unidades
+        else:
+            raise ValueError('La cantidad del producto ${self._name} debe ser mayor o igual que 0.')
+
+
 
 # Implementar una clase Inventario que maneje una lista de productos y permita las siguientes operaciones:
 
 # 1.Agregar un producto: Verificar que el producto no exista previamente en el inventario.
-
-
-
 # 4.Mostrar inventario: Listar todos los productos disponibles.
 # 5.Buscar un producto: Permitir buscar un producto por nombre.
 
