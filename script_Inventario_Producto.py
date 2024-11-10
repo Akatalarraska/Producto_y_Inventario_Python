@@ -2,30 +2,37 @@
 # Implementar una clase Producto con los siguientes atributos:
 
 class Producto:
-    # Precio debe ser mayor a 0 // Cantidad >= 0
     def __init__(self, nombre, categoria, precio, cantidad):
         self.nombre = nombre # nombre: El nombre del producto.
         self.categoria = categoria # categoria: La categoría a la que pertenece el producto.
         self.precio = precio # precio: El precio del producto (debe ser mayor que 0).
         self.cantidad = cantidad # cantidad: La cantidad en stock (debe ser mayor o igual que 0).
-
+    
+    @property
     def precio(self):
         return self._precio
-    
+    # Precio debe ser mayor a 0
+    @precio.setter
     def precio(self, euros):
         if euros >= 0:
             self._precio  = euros
         else:
-            raise ValueError('El precio del producto ${self._name} debe ser mayor o igual que 0.')
-
+            raise ValueError(f'El precio del producto {self.nombre} debe ser mayor o igual que 0.')
+    
+    @property
     def cantidad(self):
                 return self._cantidad
-    
+       
+    # CantidadPrecio debe ser mayor a 0 
+    @cantidad.setter
     def cantidad(self, unidades):
         if unidades >= 0:
             self._cantidad  = unidades
         else:
-            raise ValueError('La cantidad del producto ${self._name} debe ser mayor o igual que 0.')
+            raise ValueError(f'La cantidad del producto {self.nombre} debe ser mayor o igual que 0.')
+
+    def __str__(self):
+        return f"Producto: {self.nombre}, Categoría: {self.categoria}, Precio: {self.precio}€, Cantidad: {self.cantidad}u"
 
 
 
@@ -94,3 +101,6 @@ Requisitos de Entrega (POR FAVOR, CUMPLE ESTOS REQUISITOS, EL EJERCICIO FINAL NO
 2.Las clases deben estar organizadas siguiendo los principios de POO (atributos privados, getters, setters, encapsulamiento).
 3.El código debe estar bien estructurado y comentado.
 """
+
+p1 = Producto("madalenas", "bolleria", 2, 10)
+print(p1)
