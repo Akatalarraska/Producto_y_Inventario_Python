@@ -1,6 +1,4 @@
-
 # Implementar una clase Producto con los siguientes atributos:
-
 class Producto:
     def __init__(self, nombre, categoria, precio, cantidad):
         self.nombre = nombre # nombre: El nombre del producto.
@@ -37,70 +35,64 @@ class Producto:
 
 
 # Implementar una clase Inventario que maneje una lista de productos y permita las siguientes operaciones:
-
-# 1.Agregar un producto: Verificar que el producto no exista previamente en el inventario.
-# 4.Mostrar inventario: Listar todos los productos disponibles.
-# 5.Buscar un producto: Permitir buscar un producto por nombre.
-
 class Inventario:
-    def __init__(self, productos=[]):
-        self.productos = productos
-        pass
+    def __init__(self):
+        self._productos = []  #Se crea una lisa vacia para manejar los productos.
+
+    # 1.Agregar un producto: 
+    def añadir_producto(self, producto):
+        # Verificar que el producto no exista previamente en el inventario.
+        for x in self._productos:
+            if x.nombre == producto.nombre:
+                print('Error: Este ya producto ya se encuentra actualmente en el inventario.')
+                return
+            self._productos.append(producto)
+            print(f"El producto: '{producto.nombre}' se ha añadido al inventario.")
 
     # 2.Actualizar un producto: Modificar el precio o la cantidad en stock de un producto ya existente.
-    def modificar_Precio(self):
-        nuevoPrecio = int(input('Introduce el nuevo precio para el producto:'))
-        self.precio = nuevoPrecio
-   
-    def modificar_Cantidad(self):
-        nuevaCantidad = int(input('Introduce las unidades actuales del producto:'))
-        self.cantidad = nuevaCantidad
+    def actualizar_producto(self, nombre, precio=None, cantidad=None):
+        for x in self._productos:
+            if x.nombre == nombre:
+                if precio is not None:
+                    x.precio = precio
+                if x.cantidad is not None:
+                    x.cantidad = cantidad
+                print(f"El producto '{nombre}' se ha actualizado.")
+                return
+        print(f'Error, no se ha encontrado este producto: "{nombre}" en el inventario')
 
     # 3.Eliminar un producto: Quitar un producto del inventario. 
-    def borrar_producto(self, dni=None):
-        for i, prod in enumerate(self.productos):
-            if prod.dni == dni:
-                del(self.clientes[i])
-                print(str(prod),"> BORRADO")
+    def borrar_producto(self, nombre):
+        for x in self._productos:
+            if x.nombre == nombre:
+                self._productos.remove(x)
+                print(f"El producto: '{nombre}' se ha eliminado del inventario.")
                 return
-        print("Cliente no encontrado")
+        print(f"El producto: '{nombre}' no se encuentra en el inventario.")
 
 
-"""
-Ejercicio Final - Enunciado
-Descripción: Crea una aplicación en Python para la gestión de un inventario de productos, usando programación orientada a objetos (POO). El sistema debe permitir agregar, actualizar, eliminar y mostrar productos en un inventario, cada uno de los cuales es representado como un objeto de la clase Producto.
+# 4.Mostrar inventario: Listar todos los productos disponibles.
+    def mostrar_inventario(self):
+        if not self._productos:
+            print('La lista de prodcutos del inventario está vacia.')
+        else:
+            print('Productos en el inventario:')
+            for x in self._productos:
+                print(x)
 
-1.Clases y Objetos:
-
-
-
-
-1.Agregar un producto: Verificar que el producto no exista previamente en el inventario.
-
-2.Actualizar un producto: Modificar el precio o la cantidad en stock de un producto ya existente.
-3.Eliminar un producto: Quitar un producto del inventario.
-4.Mostrar inventario: Listar todos los productos disponibles.
-5.Buscar un producto: Permitir buscar un producto por nombre.
-
-2.Validaciones:
-El precio debe ser siempre mayor que 0.
-La cantidad debe ser mayor o igual que 0.
-Manejar correctamente las excepciones y validar entradas (evitar que el usuario ingrese datos no válidos).
-
-3.Funciones y Métodos:
-Todos los atributos deben ser privados, utilizando getters y setters para acceder y modificar los valores.
-Deben implementarse métodos para cada una de las funcionalidades mencionadas (agregar, actualizar, eliminar, etc.).
-
-4.Organización del Código:
-El código debe estar estructurado de manera que sea legible y modular.
-Cada funcionalidad debe estar en un método de la clase correspondiente.
-No se deben utilizar variables globales fuera de las clases.
-
-Requisitos de Entrega (POR FAVOR, CUMPLE ESTOS REQUISITOS, EL EJERCICIO FINAL NO SERÁ VALORADO)
-1.El archivo debe ser un script en Python con las clases Producto e Inventario correctamente implementadas.
-2.Las clases deben estar organizadas siguiendo los principios de POO (atributos privados, getters, setters, encapsulamiento).
-3.El código debe estar bien estructurado y comentado.
-"""
+# 5.Buscar un producto: Permitir buscar un producto por nombre.
+    def buscar_producto(self, nombre):
+        for x in self._productos:
+            if x.nombre == nombre:
+                print('Producto:', x)
+                return
+        print('Error, no se ha encontrado el producto en el inventario.')
+            
+        
 
 p1 = Producto("madalenas", "bolleria", 2, 10)
+p2 = Producto("Patatas", "Verdura", 2.30, 2 )
+p3 = Producto('Bicicleta', 'Deporte', 900, 7)
 print(p1)
+print(p2)
+print(p3)
