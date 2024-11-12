@@ -98,28 +98,3 @@ class Inventario:
             
         
 
-p1 = Producto("madalenas", "bolleria", 2, 10)
-p2 = Producto("Patatas", "Verdura", 2.30, 2 )
-p3 = Producto('Bicicleta', 'Deporte', 900, 7)
-print(p1)
-print(p2)
-print(p3)
-
-inventario = Inventario()
-
-inventario.añadir_producto(p1)
-inventario.añadir_producto(p2)
-inventario.añadir_producto(p3)
-
-inventario.mostrar_inventario()
-
-inventario.actualizar_producto("Bicicleta", precio=1300, cantidad=4)
-
-# Buscar un producto
-inventario.buscar_producto("Teclado")
-
-# Eliminar un producto
-inventario.eliminar_producto("Monitor")
-
-# Mostrar el inventario nuevamente
-inventario.mostrar_inventario()
