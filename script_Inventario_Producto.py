@@ -1,10 +1,18 @@
 # Implementar una clase Producto con los siguientes atributos:
 class Producto:
     def __init__(self, nombre, categoria, precio, cantidad):
-        self.nombre = nombre # nombre: El nombre del producto.
-        self.categoria = categoria # categoria: La categoría a la que pertenece el producto.
-        self.precio = precio # precio: El precio del producto (debe ser mayor que 0).
-        self.cantidad = cantidad # cantidad: La cantidad en stock (debe ser mayor o igual que 0).
+        self._nombre = nombre # nombre: El nombre del producto.
+        self._categoria = categoria # categoria: La categoría a la que pertenece el producto.
+        self._precio = precio # precio: El precio del producto (debe ser mayor que 0).
+        self._cantidad = cantidad # cantidad: La cantidad en stock (debe ser mayor o igual que 0).
+    
+    @property
+    def nombre(self):
+        return self._nombre
+    
+    @property
+    def categoria(self):
+        return self._categoria
     
     @property
     def precio(self):
@@ -12,10 +20,10 @@ class Producto:
     # Precio debe ser mayor a 0
     @precio.setter
     def precio(self, euros):
-        if euros >= 0:
+        if euros > 0:
             self._precio  = euros
         else:
-            raise ValueError(f'El precio del producto {self.nombre} debe ser mayor o igual que 0.')
+            raise ValueError(f'El precio del producto {self.nombre} debe ser mayor a 0€.')
     
     @property
     def cantidad(self):
@@ -46,8 +54,8 @@ class Inventario:
             if x.nombre == producto.nombre:
                 print('Error: Este ya producto ya se encuentra actualmente en el inventario.')
                 return
-            self._productos.append(producto)
-            print(f"El producto: '{producto.nombre}' se ha añadido al inventario.")
+        self._productos.append(producto)
+        print(f"El producto: '{producto.nombre}' se ha añadido al inventario.")
 
     # 2.Actualizar un producto: Modificar el precio o la cantidad en stock de un producto ya existente.
     def actualizar_producto(self, nombre, precio=None, cantidad=None):
@@ -55,14 +63,14 @@ class Inventario:
             if x.nombre == nombre:
                 if precio is not None:
                     x.precio = precio
-                if x.cantidad is not None:
+                if cantidad is not None:
                     x.cantidad = cantidad
                 print(f"El producto '{nombre}' se ha actualizado.")
                 return
         print(f'Error, no se ha encontrado este producto: "{nombre}" en el inventario')
 
     # 3.Eliminar un producto: Quitar un producto del inventario. 
-    def borrar_producto(self, nombre):
+    def eliminar_producto(self, nombre):
         for x in self._productos:
             if x.nombre == nombre:
                 self._productos.remove(x)
@@ -86,7 +94,7 @@ class Inventario:
             if x.nombre == nombre:
                 print('Producto:', x)
                 return
-        print('Error, no se ha encontrado el producto en el inventario.')
+        print(f"Error, no se ha encontrado el producto '{nombre}' en el inventario.")
             
         
 
@@ -96,3 +104,22 @@ p3 = Producto('Bicicleta', 'Deporte', 900, 7)
 print(p1)
 print(p2)
 print(p3)
+
+inventario = Inventario()
+
+inventario.añadir_producto(p1)
+inventario.añadir_producto(p2)
+inventario.añadir_producto(p3)
+
+inventario.mostrar_inventario()
+
+inventario.actualizar_producto("Bicicleta", precio=1300, cantidad=4)
+
+# Buscar un producto
+inventario.buscar_producto("Teclado")
+
+# Eliminar un producto
+inventario.eliminar_producto("Monitor")
+
+# Mostrar el inventario nuevamente
+inventario.mostrar_inventario()
